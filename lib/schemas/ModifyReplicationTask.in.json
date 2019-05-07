@@ -1,0 +1,88 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "properties": {
+                "CdcStartPosition": {
+                    "description": "<p>Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p> The value can be in date, checkpoint, or LSN/SCN format.</p> <p>Date Example: --cdc-start-position “2018-03-08T12:12:12”</p> <p>Checkpoint Example: --cdc-start-position \"checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93\"</p> <p>LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”</p>",
+                    "type": "string"
+                },
+                "CdcStartTime": {
+                    "description": "<p>Indicates the start time for a change data capture (CDC) operation. Use either CdcStartTime or CdcStartPosition to specify when you want a CDC operation to start. Specifying both values results in an error.</p> <p>Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”</p>",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "CdcStopPosition": {
+                    "description": "<p>Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time.</p> <p>Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12”</p> <p>Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “</p>",
+                    "type": "string"
+                },
+                "MigrationType": {
+                    "description": "<p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>",
+                    "enum": [
+                        "full-load",
+                        "cdc",
+                        "full-load-and-cdc"
+                    ],
+                    "type": "string"
+                },
+                "ReplicationTaskArn": {
+                    "description": "The Amazon Resource Name (ARN) of the replication task.",
+                    "type": "string"
+                },
+                "ReplicationTaskIdentifier": {
+                    "description": "<p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>",
+                    "type": "string"
+                },
+                "ReplicationTaskSettings": {
+                    "description": "JSON file that contains settings for the task, such as target metadata settings.",
+                    "type": "string"
+                },
+                "TableMappings": {
+                    "description": "<p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with \"file://\". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ReplicationTaskArn"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

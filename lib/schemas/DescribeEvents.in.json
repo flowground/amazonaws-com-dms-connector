@@ -1,0 +1,112 @@
+{
+    "type": "object",
+    "properties": {
+        "MaxRecords": {
+            "required": false,
+            "type": "string"
+        },
+        "Marker": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "properties": {
+                "Duration": {
+                    "description": "The duration of the events to be listed.",
+                    "type": "integer"
+                },
+                "EndTime": {
+                    "description": "The end time for the events to be listed.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "EventCategories": {
+                    "description": "A list of event categories for a source type that you want to subscribe to.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "Filters": {
+                    "description": "Filters applied to the action.",
+                    "items": {
+                        "description": "<p/>",
+                        "properties": {
+                            "Name": {
+                                "description": "The name of the filter.",
+                                "type": "string"
+                            },
+                            "Values": {
+                                "description": "The filter value.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "Name",
+                            "Values"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "Marker": {
+                    "description": " An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. ",
+                    "type": "string"
+                },
+                "MaxRecords": {
+                    "description": "<p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>",
+                    "type": "integer"
+                },
+                "SourceIdentifier": {
+                    "description": " The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. ",
+                    "type": "string"
+                },
+                "SourceType": {
+                    "description": "<p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>",
+                    "enum": [
+                        "replication-instance"
+                    ],
+                    "type": "string"
+                },
+                "StartTime": {
+                    "description": "The start time for the events to be listed.",
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

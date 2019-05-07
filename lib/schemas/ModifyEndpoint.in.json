@@ -1,0 +1,311 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "example": {
+                "CertificateArn": "",
+                "DatabaseName": "",
+                "EndpointArn": "",
+                "EndpointIdentifier": "",
+                "EndpointType": "source",
+                "EngineName": "",
+                "ExtraConnectionAttributes": "",
+                "Password": "",
+                "Port": 123,
+                "ServerName": "",
+                "SslMode": "require",
+                "Username": ""
+            },
+            "properties": {
+                "CertificateArn": {
+                    "description": "The Amazon Resource Name (ARN) of the certificate used for SSL connection.",
+                    "type": "string"
+                },
+                "DatabaseName": {
+                    "description": "The name of the endpoint database.",
+                    "type": "string"
+                },
+                "DmsTransferSettings": {
+                    "description": "<p>The settings in JSON format for the DMS transfer type of source endpoint. </p> <p>Attributes include the following:</p> <ul> <li> <p>serviceAccessRoleArn - The IAM role that has permission to access the Amazon S3 bucket.</p> </li> <li> <p>BucketName - The name of the S3 bucket to use.</p> </li> <li> <p>compressionType - An optional parameter to use GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.</p> </li> </ul> <p>Shorthand syntax: ServiceAccessRoleArn=string ,BucketName=string,CompressionType=string</p> <p>JSON syntax:</p> <p> { \"ServiceAccessRoleArn\": \"string\", \"BucketName\": \"string\", \"CompressionType\": \"none\"|\"gzip\" } </p>",
+                    "properties": {
+                        "BucketName": {
+                            "description": " The name of the S3 bucket to use. ",
+                            "type": "string"
+                        },
+                        "ServiceAccessRoleArn": {
+                            "description": " The IAM role that has permission to access the Amazon S3 bucket. ",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "DynamoDbSettings": {
+                    "description": "Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see <a href=\"http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html\">Using Object Mapping to Migrate Data to DynamoDB</a> in the <i>AWS Database Migration Service User Guide.</i> ",
+                    "properties": {
+                        "ServiceAccessRoleArn": {
+                            "description": " The Amazon Resource Name (ARN) used by the service access IAM role. ",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "ServiceAccessRoleArn"
+                    ],
+                    "type": "object"
+                },
+                "ElasticsearchSettings": {
+                    "description": "Settings in JSON format for the target Elasticsearch endpoint. For more information about the available settings, see <a href=\"http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration\">Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS</a> in the <i>AWS Database Migration User Guide.</i> ",
+                    "properties": {
+                        "EndpointUri": {
+                            "description": "The endpoint for the ElasticSearch cluster.",
+                            "type": "string"
+                        },
+                        "ErrorRetryDuration": {
+                            "description": "The maximum number of seconds that DMS retries failed API requests to the Elasticsearch cluster.",
+                            "type": "integer"
+                        },
+                        "FullLoadErrorPercentage": {
+                            "description": "The maximum percentage of records that can fail to be written before a full load operation stops. ",
+                            "type": "integer"
+                        },
+                        "ServiceAccessRoleArn": {
+                            "description": "The Amazon Resource Name (ARN) used by service to access the IAM role.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "ServiceAccessRoleArn",
+                        "EndpointUri"
+                    ],
+                    "type": "object"
+                },
+                "EndpointArn": {
+                    "description": "The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.",
+                    "type": "string"
+                },
+                "EndpointIdentifier": {
+                    "description": "The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.",
+                    "type": "string"
+                },
+                "EndpointType": {
+                    "description": "The type of endpoint.",
+                    "enum": [
+                        "source",
+                        "target"
+                    ],
+                    "type": "string"
+                },
+                "EngineName": {
+                    "description": "The type of engine for the endpoint. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.",
+                    "type": "string"
+                },
+                "ExternalTableDefinition": {
+                    "description": "The external table definition.",
+                    "type": "string"
+                },
+                "ExtraConnectionAttributes": {
+                    "description": "Additional attributes associated with the connection. To reset this parameter, pass the empty string (\"\") as an argument.",
+                    "type": "string"
+                },
+                "KinesisSettings": {
+                    "description": "Settings in JSON format for the target Amazon Kinesis Data Streams endpoint. For more information about the available settings, see <a href=\"http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping \">Using Object Mapping to Migrate Data to a Kinesis Data Stream</a> in the <i>AWS Database Migration User Guide.</i> ",
+                    "properties": {
+                        "MessageFormat": {
+                            "description": "The output format for the records created on the endpoint. The message format is <code>JSON</code>.",
+                            "enum": [
+                                "json"
+                            ],
+                            "type": "string"
+                        },
+                        "ServiceAccessRoleArn": {
+                            "description": "The Amazon Resource Name (ARN) for the IAM role that DMS uses to write to the Amazon Kinesis data stream.",
+                            "type": "string"
+                        },
+                        "StreamArn": {
+                            "description": "The Amazon Resource Name (ARN) for the Amazon Kinesis Data Streams endpoint.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "MongoDbSettings": {
+                    "description": "Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the configuration properties section in <a href=\"http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html\"> Using MongoDB as a Target for AWS Database Migration Service</a> in the <i>AWS Database Migration Service User Guide.</i> ",
+                    "properties": {
+                        "AuthMechanism": {
+                            "description": "<p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>",
+                            "enum": [
+                                "default",
+                                "mongodb_cr",
+                                "scram_sha_1"
+                            ],
+                            "type": "string"
+                        },
+                        "AuthSource": {
+                            "description": "<p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>",
+                            "type": "string"
+                        },
+                        "AuthType": {
+                            "description": "<p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>",
+                            "enum": [
+                                "no",
+                                "password"
+                            ],
+                            "type": "string"
+                        },
+                        "DatabaseName": {
+                            "description": " The database name on the MongoDB source endpoint. ",
+                            "type": "string"
+                        },
+                        "DocsToInvestigate": {
+                            "description": "<p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>",
+                            "type": "string"
+                        },
+                        "ExtractDocId": {
+                            "description": "<p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>",
+                            "type": "string"
+                        },
+                        "KmsKeyId": {
+                            "description": "The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.",
+                            "type": "string"
+                        },
+                        "NestingLevel": {
+                            "description": "<p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>",
+                            "enum": [
+                                "none",
+                                "one"
+                            ],
+                            "type": "string"
+                        },
+                        "Password": {
+                            "description": " The password for the user account you use to access the MongoDB source endpoint. ",
+                            "format": "password",
+                            "type": "string"
+                        },
+                        "Port": {
+                            "description": " The port value for the MongoDB source endpoint. ",
+                            "type": "integer"
+                        },
+                        "ServerName": {
+                            "description": " The name of the server on the MongoDB source endpoint. ",
+                            "type": "string"
+                        },
+                        "Username": {
+                            "description": "The user name you use to access the MongoDB source endpoint. ",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "Password": {
+                    "description": "The password to be used to login to the endpoint database.",
+                    "format": "password",
+                    "type": "string"
+                },
+                "Port": {
+                    "description": "The port used by the endpoint database.",
+                    "type": "integer"
+                },
+                "S3Settings": {
+                    "description": "Settings in JSON format for the target Amazon S3 endpoint. For more information about the available settings, see <a href=\"http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring\">Extra Connection Attributes When Using Amazon S3 as a Target for AWS DMS</a> in the <i>AWS Database Migration Service User Guide.</i> ",
+                    "properties": {
+                        "BucketFolder": {
+                            "description": " An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. ",
+                            "type": "string"
+                        },
+                        "BucketName": {
+                            "description": " The name of the S3 bucket. ",
+                            "type": "string"
+                        },
+                        "CompressionType": {
+                            "description": " An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. ",
+                            "enum": [
+                                "none",
+                                "gzip"
+                            ],
+                            "type": "string"
+                        },
+                        "CsvDelimiter": {
+                            "description": " The delimiter used to separate columns in the source files. The default is a comma. ",
+                            "type": "string"
+                        },
+                        "CsvRowDelimiter": {
+                            "description": " The delimiter used to separate rows in the source files. The default is a carriage return (\\n). ",
+                            "type": "string"
+                        },
+                        "ExternalTableDefinition": {
+                            "description": " The external table definition. ",
+                            "type": "string"
+                        },
+                        "ServiceAccessRoleArn": {
+                            "description": " The Amazon Resource Name (ARN) used by the service access IAM role. ",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "ServerName": {
+                    "description": "The name of the server where the endpoint database resides.",
+                    "type": "string"
+                },
+                "ServiceAccessRoleArn": {
+                    "description": " The Amazon Resource Name (ARN) for the service access role you want to use to modify the endpoint. ",
+                    "type": "string"
+                },
+                "SslMode": {
+                    "description": "<p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>",
+                    "enum": [
+                        "none",
+                        "require",
+                        "verify-ca",
+                        "verify-full"
+                    ],
+                    "type": "string"
+                },
+                "Username": {
+                    "description": "The user name to be used to login to the endpoint database.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "EndpointArn"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

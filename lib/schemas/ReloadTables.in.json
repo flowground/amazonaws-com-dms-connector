@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "ReloadOption": {
+                    "description": "<p>Options for reload. Specify <code>data-reload</code> to reload the data and re-validate it if validation is enabled. Specify <code>validate-only</code> to re-validate the table. This option applies only when validation is enabled for the task. </p> <p>Valid values: data-reload, validate-only</p> <p>Default value is data-reload.</p>",
+                    "enum": [
+                        "data-reload",
+                        "validate-only"
+                    ],
+                    "type": "string"
+                },
+                "ReplicationTaskArn": {
+                    "description": "The Amazon Resource Name (ARN) of the replication task. ",
+                    "type": "string"
+                },
+                "TablesToReload": {
+                    "description": "The name and schema of the table to be reloaded. ",
+                    "items": {
+                        "description": "<p/>",
+                        "properties": {
+                            "SchemaName": {
+                                "description": "The schema name of the table to be reloaded.",
+                                "type": "string"
+                            },
+                            "TableName": {
+                                "description": "The table name of the table to be reloaded.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "ReplicationTaskArn",
+                "TablesToReload"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

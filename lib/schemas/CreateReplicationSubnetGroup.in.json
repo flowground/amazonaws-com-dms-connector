@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p/>",
+            "example": {
+                "ReplicationSubnetGroupDescription": "US West subnet group",
+                "ReplicationSubnetGroupIdentifier": "us-west-2ab-vpc-215ds366",
+                "SubnetIds": [
+                    "subnet-e145356n",
+                    "subnet-58f79200"
+                ],
+                "Tags": [
+                    {
+                        "Key": "Acount",
+                        "Value": "145235"
+                    }
+                ]
+            },
+            "properties": {
+                "ReplicationSubnetGroupDescription": {
+                    "description": "The description for the subnet group.",
+                    "type": "string"
+                },
+                "ReplicationSubnetGroupIdentifier": {
+                    "description": "<p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be \"default\".</p> <p>Example: <code>mySubnetgroup</code> </p>",
+                    "type": "string"
+                },
+                "SubnetIds": {
+                    "description": "The EC2 subnet IDs for the subnet group.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "Tags": {
+                    "description": "The tag to be assigned to the subnet group.",
+                    "items": {
+                        "description": "<p/>",
+                        "properties": {
+                            "Key": {
+                                "description": "A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with \"aws:\" or \"dms:\". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: \"^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$\").",
+                                "type": "string"
+                            },
+                            "Value": {
+                                "description": "A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with \"aws:\" or \"dms:\". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: \"^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$\").",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "ReplicationSubnetGroupIdentifier",
+                "ReplicationSubnetGroupDescription",
+                "SubnetIds"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
